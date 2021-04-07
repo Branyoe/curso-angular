@@ -70,33 +70,77 @@ listaInterfas.forEach(function (v, i) {
     console.log(v);
 });
 //tambien puedes acceder a las propiedades de un objeto dentro de un arreglo mediante "."
-console.log('aqui solo se muestran los nombres de los objetos dentro del arreglo...');
+console.log('a continuación solo se muestran los nombres de los objetos dentro del arreglo...');
 listaInterfas.forEach(function (v) {
     console.log(v.nombre);
 });
 /******************************************************************************* */
 //switch con enum
-console.warn('switch con enum');
+// console.warn('switch con enum');
 //declaración
-var subMenu;
-(function (subMenu) {
-    subMenu[subMenu["perfil"] = 1] = "perfil";
-    subMenu[subMenu["contactos"] = 2] = "contactos";
-    subMenu[subMenu["config"] = 3] = "config";
-})(subMenu || (subMenu = {}));
-//uso
-var menu = 2;
-switch (menu) {
-    case subMenus.perfil: {
-        console.log('perfil');
-    }
-    case subMenus.contactos: {
-        console.log('contactos');
-    }
-    case subMenus.config: {
-        console.log('contactos');
-    }
-    default: {
-        console.log('no existe');
-    }
+// enum subMenu{
+//   perfil = 1,
+//   contactos = 2,
+//   config = 3
+// }
+// //uso
+// var menu:number = 2
+// switch(menu){
+//   case subMenus.perfil:{
+//     console.log('perfil');
+//   }
+//   case subMenus.contactos:{
+//     console.log('contactos');    
+//   }
+//   case subMenus.config:{
+//     console.log('contactos');
+//   }
+//   default:{
+//     console.log('no existe');
+//   }
+// }
+/******************************************************************************* */
+//For OF
+console.warn('For OF');
+var listaFam = [
+    { nombre: 'daniel', apellido: 'hernandez' },
+    { nombre: 'Elvia', apellido: 'Ascecio' },
+    { nombre: 'Ivan', apellido: 'hernandez' },
+    { nombre: 'Mario', apellido: 'hernandez' }
+];
+for (var _i = 0, listaFam_1 = listaFam; _i < listaFam_1.length; _i++) {
+    var fam = listaFam_1[_i];
+    console.log(fam.nombre);
 }
+/*********************************** */
+console.warn('for IN');
+for (var index in listaFam) {
+    console.log(listaFam[index].apellido);
+}
+/******************************************** */
+console.warn('Clases');
+//declaración
+var Person = /** @class */ (function () {
+    //metodo de  asignación
+    function Person() {
+        this.nombre = 'sin nombre';
+        this.peso = 0;
+        this.vivo = undefined;
+        this.resumen();
+    }
+    Person.prototype.resumen = function () {
+        console.log("Hola soy " + this.nombre + ", mi peso es de " + this.peso + "KG y estoy " + (this.vivo == true ? 'vivo' : this.vivo == false ? 'muerto' : 'naciendo') + ".");
+    };
+    Person.prototype.asignar = function (nombreParam, pesoParam, vivoParam) {
+        this.nombre = nombreParam;
+        this.peso = pesoParam;
+        this.vivo = vivoParam;
+        this.resumen();
+    };
+    return Person;
+}());
+//uso
+var person1 = new Person;
+person1.asignar('Brandon', 73, true);
+var person2 = new Person;
+person2.asignar('Joaquin', .3, false);

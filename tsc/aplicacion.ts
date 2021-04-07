@@ -55,7 +55,7 @@ console.log(auto2);
 //tipo de dato any...Nos permiten usar variables como se usaran en js vanilla
 console.warn('Datos any...');
 //declaración
-var variable:any = 31;
+var variable: any = 31;
 //uso
 console.log(`variable: ${variable}`);
 variable = 'texto',
@@ -92,7 +92,7 @@ listaInterfas.forEach((v,i) => {
   console.log(v);
 })
   //tambien puedes acceder a las propiedades de un objeto dentro de un arreglo mediante "."
-console.log('aqui solo se muestran los nombres de los objetos dentro del arreglo...');
+console.log('a continuación solo se muestran los nombres de los objetos dentro del arreglo...');
 listaInterfas.forEach((v) => {
   console.log(v.nombre);
 })
@@ -100,31 +100,88 @@ listaInterfas.forEach((v) => {
 
 /******************************************************************************* */
 //switch con enum
-console.warn('switch con enum');
+// console.warn('switch con enum');
 //declaración
-enum subMenu{
-  perfil = 1,
-  contactos = 2,
-  config = 3
+// enum subMenu{
+//   perfil = 1,
+//   contactos = 2,
+//   config = 3
+// }
+// //uso
+// var menu:number = 2
+// switch(menu){
+//   case subMenus.perfil:{
+//     console.log('perfil');
+//   }
+//   case subMenus.contactos:{
+//     console.log('contactos');    
+//   }
+//   case subMenus.config:{
+//     console.log('contactos');
+//   }
+//   default:{
+//     console.log('no existe');
+//   }
+// }
+
+
+/******************************************************************************* */
+//For OF
+console.warn('For OF');
+interface Fam {
+  nombre: string,
+  apellido: string
+}
+let listaFam: Array<Fam> = [
+  {nombre: 'daniel', apellido: 'hernandez'},
+  {nombre: 'Elvia', apellido: 'Ascecio'},
+  {nombre: 'Ivan', apellido: 'hernandez'},
+  {nombre: 'Mario', apellido: 'hernandez'}
+]
+for(let fam of listaFam){
+  console.log(fam.nombre)
+}
+
+
+/*********************************** */
+console.warn('for IN');
+for(let index in listaFam){
+  console.log(listaFam[index].apellido);
+}
+
+/******************************************** */
+console.warn('Clases');
+//declaración
+class Person {
+  private nombre: string; //poner en private condisiona para solo por ser modificados mediante metodos
+  private peso: number;
+  private vivo: boolean;
+  //metodo de  asignación
+
+  constructor(){ //se ejecuta al instaciar un objeto
+    this.nombre = 'sin nombre';
+    this.peso = 0;
+    this.vivo = undefined;
+    this.resumen();
+  }
+  private resumen() : void {
+    console.log(`Hola soy ${this.nombre}, mi peso es de ${this.peso}KG y estoy ${this.vivo == true ? 'vivo' : this.vivo == false ? 'muerto' : 'naciendo'}.`);
+  }
+  asignar(nombreParam: string, pesoParam: number, vivoParam: boolean){
+    this.nombre = nombreParam;
+    this.peso = pesoParam;
+    this.vivo = vivoParam;
+    this.resumen();
+  }
+  //metodo de resumen
+  
 }
 //uso
-var menu:number = 2
-switch(menu){
-  case subMenus.perfil:{
-    console.log('perfil');
-  }
-  case subMenus.contactos:{
-    console.log('contactos');    
-  }
-  case subMenus.config:{
-    console.log('contactos');
-  }
-  default:{
-    console.log('no existe');
-  }
-}
+var person1 = new Person;
+person1.asignar('Brandon', 73, true);
 
-
+var person2 = new Person;
+person2.asignar('Joaquin', .3, false);
 
 
 
