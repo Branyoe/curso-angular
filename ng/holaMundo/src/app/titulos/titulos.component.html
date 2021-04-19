@@ -1,0 +1,28 @@
+<!-- interpolacion imprime en html datos tsc -->
+<h1>Hola soy {{alumnos[0].nombre}} {{alumnos[0].apellido}}</h1>
+<h2>Hola soy {{alumnos[1].nombre}} {{alumnos[1].apellido}}</h2>
+<h3>Hol soy {{alumnos[2].nombre}} {{alumnos[2].apellido}}</h3>
+<!-- property binding llena propiedades con tsc-->
+<input class="a" type="text" [value]="alumnos[1].nombre + alumnos[1].apellido">
+<img [src]="img" width="100px">
+<!-- two way binding perimie pasar el valor de imputs a tsc-->
+<div>
+  <label for="">Correo
+    <input type="text" placeholder="a@a.a" [(ngModel)]="correo"> <!-- ngModel hace que lo que se escriba pase a la variable -->
+  </label>
+  <label for="">Contraseña
+    <input type="password" placeholder="Contraseña" [(ngModel)]="password">
+  </label>
+  <button (click) ="mostrarPsw()">Mostrar Contraseña</button> <!-- boton con el evento click -->
+  <br>
+  <!-- two way binding directo -->
+  <p>{{correo}}</p>
+  <!-- two way binding a travez de evento -->
+  <p>{{password2}}</p>
+</div>
+<!-- eventos -->
+<div class="forma" (click)="clickDiv()" (dblclick)="dbl()" (mouseenter)="mouseEnter($event)" (mouseleave)="mouseLeave($event)"> <!-- Eventos click y dblcilck -->
+  <p> {{divTxt}}</p>
+  <input type="text" [(ngModel)]="ngMdl" (ngModelChange)="ngMdlCg()" (focus)="focus($event)" (keydown)="keyDown($event)" (keyup)="keyUp($event)"><!--evento ngModelChange-->
+  <input type="text" (input)="inputE($event)" (focus)="focus($event)" (keydown)="keyDown($event)" (keyup)="keyUp($event)"><!--evento ngModelChange-->
+</div>
